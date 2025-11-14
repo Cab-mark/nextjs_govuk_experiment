@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="govuk-template--rebranded">
+    <html lang="en" className="govuk-template govuk-template--rebranded">
       <body className="govuk-template__body">
 
         <GovukHeader />
@@ -27,7 +27,7 @@ export default function RootLayout({
           </div>
 
         <GovukFooter />
-        
+
       </body>
     </html>
   );
