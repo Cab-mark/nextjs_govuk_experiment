@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "cp -r ./node_modules/govuk-frontend/dist/govuk/assets ./public/"
   },
   "dependencies": {
     "govuk-frontend": "^5.13.0",

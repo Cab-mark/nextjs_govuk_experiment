@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import "./globals.scss";
 import GovukInit from "./GovukInit";
 import Skip from "./components/Skip";
@@ -11,7 +10,7 @@ import PhaseBanner from "./components/PhaseBanner";
 
 export const metadata: Metadata = {
   title: "Civil Service Jobs",
-  description: "next.js prototype for Civil Service Jobs.",
+  description: "A job search platform for the UK Civil Service.",
 };
 
 const navLinks = [
@@ -33,6 +32,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="govuk-template govuk-template--rebranded">
+      <head>
+        <link rel="icon" sizes="48x48" href="/assets/rebrand/images/favicon.ico" />
+        <link rel="icon" sizes="any" href="/assets/rebrand/images/favicon.svg" type="image/svg+xml" />
+        <link rel="mask-icon" href="/assets/rebrand/images/govuk-icon-mask.svg" color="#1d70b8" />
+      </head>
       <body className="govuk-template__body govuk-frontend-supported">
         <GovukInit />
         <Skip />
