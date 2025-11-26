@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getJobById, Job } from "../../lib/mockJobs";
-import JobDetails from "../../components/jobDetails";
+import JobDetails from "../../components/JobDetails";
+import JobAdvert from "@/app/components/JobAdvert";
 
 interface JobAdvertProps {
   params: { id: string };
@@ -26,6 +27,7 @@ export default async function JobAdvertPage({ params }: JobAdvertProps) {
     <div className="govuk-grid-row">
       <div className="govuk-grid-column-full">
   <JobDetails job={job as Job} />
+  <JobAdvert job={job as Job} />
       </div>
     </div>
     </div>
