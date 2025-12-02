@@ -33,6 +33,9 @@ export async function GET(request: NextRequest) {
   }
 
   try {
+    // Note: OS Places API requires the key as a query parameter
+    // This is secure because this call is made server-side and
+    // the key is never exposed to the client browser
     const apiUrl = new URL(OS_PLACES_API_URL);
     apiUrl.searchParams.set('query', query);
     apiUrl.searchParams.set('key', OS_PLACES_API_KEY);

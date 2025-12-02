@@ -2,6 +2,9 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 
+// Delay for blur handler to allow click events on suggestions to register
+const BLUR_DELAY_MS = 150;
+
 interface LocationAutocompleteProps {
   id: string;
   name: string;
@@ -102,14 +105,14 @@ export default function LocationAutocomplete({
     }
   };
 
-  const handleBlur = (e: React.FocusEvent) => {
-    // Delay closing to allow click events on suggestions
+  const handleBlur = () => {
+    // Delay closing to allow click events on suggestions to register
     setTimeout(() => {
       if (!listRef.current?.contains(document.activeElement)) {
         setIsOpen(false);
         setActiveIndex(-1);
       }
-    }, 150);
+    }, BLUR_DELAY_MS);
   };
 
   // Scroll active item into view
@@ -192,7 +195,7 @@ export default function LocationAutocomplete({
         >
           {suggestions.map((suggestion, index) => (
             <li
-              key={`${suggestion}-${index}`}
+              key={index}
               id={`${id}-option-${index}`}
               role="option"
               aria-selected={index === activeIndex}
