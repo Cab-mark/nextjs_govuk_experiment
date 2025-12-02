@@ -1,7 +1,8 @@
 # Stage 1: Install dependencies
 FROM node:20-alpine AS deps
-# Install libc6-compat only if needed for native dependencies
-RUN apk add --no-cache libc6-compat || true
+# libc6-compat may be needed for certain native dependencies
+# This is optional and the build will continue if it fails to install
+RUN apk add --no-cache libc6-compat 2>/dev/null || true
 WORKDIR /app
 
 # Copy dependency files
