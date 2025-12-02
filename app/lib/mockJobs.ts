@@ -5,12 +5,41 @@ export interface JobAttachment {
   fileSize?: string;
 }
 
+export interface JobLocation {
+  
+  // --- applying Bs7666 standard as mandated by Nova --- 
+  
+  // --- Identifiers ---
+  uprn?: string;                // Unique Property Reference Number
+
+  // --- Addressable Objects (combined for display) ---
+  saoText?: string;             // Secondary Addressable Object (e.g. Flat)
+  paoText?: string;             // Primary Addressable Object (e.g. Building name/number)
+
+  // --- Street ---
+  streetDescription?: string;   // Street name (BS7666)
+  locality?: string;            // Locality / village
+  townName?: string;            // Town or settlement
+  postTown?: string;            // Royal Mail post town (normally same as townName)
+
+  // --- Postcode ---
+  postcode?: string;
+
+  // --- Geo (for OpenSearch) ---
+  latitude?: number;            // WGS84 (used for distance queries)
+  longitude?: number;           // WGS84
+
+  // --- Search helpers (optional but very useful) ---
+  formattedAddress?: string;    // Combined printable address for job advert
+  fullAddressSearch?: string;   // Keyword-searchable combined field
+}
+
 export interface Job {
   readonly id: string;
   title: string;
   description: string;
   organisation: string;
-  location: string;
+  location: JobLocation [];
   grade: string;
   assignmentType: string;
   personalSpec: string;
@@ -50,7 +79,18 @@ const jobs: Job[] = [
   grade: 'Grade 7', 
   jobNumbers: 1, 
   description: 'This is a fantastic job for a ...', 
-  location: '3 Glass Wharf, Bristol, BS2 OEL', 
+  location: [{
+    saoText: undefined,
+    paoText: '3 Glass Wharf',
+    streetDescription: undefined,
+    locality: undefined,
+    townName: 'Bristol',
+    postTown: 'Bristol',
+    postcode: 'BS2 0EL',
+    latitude: 51.4552,
+    longitude: -2.5833,
+    formattedAddress: '3 Glass Wharf, Bristol, BS2 0EL'
+  }],
   organisation: 'Ministry of Defence', 
   id: '1567', title: 'Policy Advisor', 
   salary: '£45,000', 
@@ -73,7 +113,44 @@ const jobs: Job[] = [
   jobNumbers: 4,
   summary: "Can you work in a fast-paced, high-profile environment?\nDo you have the ability to build trusting relationships with stakeholders across government and industry?\nHave you got experience in supporting the development and scrutiny of legislation, including drafting briefing materials?\n\nIf so, we’d love to hear from you!\n\nTransforming Britain’s railways is the centrepiece of the government’s transport agenda. We’re committed to putting passengers at the heart of the service by bringing passenger services into public ownership and establishing Great British Railways (GBR), a new body that will focus on reliable, affordable, high-quality, and efficient services; along with ensuring safety and accessibility.\n\nIt is an exciting time to join the Rail Reform Directorate, as we deliver the most significant transformation of the railways in decades and help shape the future of the UK’s transport network. With momentum building ahead of the introduction of primary legislation, and strong interest from industry and political stakeholders, this role is ideal for a proactive self-starter who thrives in fast paced, dynamic environments. You will have the opportunity to build effective partnerships across the sector and play a key role in delivering major reforms that will define the next era of rail travel.\n\nJoining our department comes with many benefits, including:\n\n* Employer pension contribution of 28.97% of your salary. Read more about Civil Service Pensions here\n* 25 days annual leave, increasing by 1 day each year of service (up to a maximum of 30 days annual leave), plus 8 bank holidays a privilege day for the King’s birthday\n* Flexible working options where we encourage a great work-life balance.\n\nRead more in the Benefits section below!\nFind out more about what it's like working at Department for Transport Central - Department for Transport Careers",
   description: "We are looking for two Senior Policy Advisors to join the Rail Sector Accountability Division. The roles offer an opportunity to be a key part of delivering the biggest reform in rail in a generation.\n\nThese roles will drive the development and implementation of the GBR licence and establish reformed rail sector accountabilities in legislation. You will be at the heart of shaping the GBR licence, influencing how GBR is governed and held to account and supporting Ministers in the passage of the Railways Bill. The roles will be crosscutting in nature and will require the successful candidates to be able to work strategically across interconnected issues. This will include policy development of the licence as well as the wider regulatory strategy, and the ORR’s overarching institutional role in the reformed system.\n\nThe successful candidates will also require strong relationship-building skills to be able to work effectively with colleagues, leveraging the expertise of others to develop coherent and deliverable policy solutions that ensure GBR is able to deliver on its objectives, within a clear accountability framework.\n\nThe responsibilities of the role will include:\n\n* On the GBR licence: Driving forward policy development of the GBR licence, a central pillar of rail reform, ensuring that its contents reflects and supports the wider transformation agenda.\n* Translating complex policy into a clear, authoritative GBR licence document, working with stakeholders across and beyond government to ensure it is coherent and ready for a public consultation.\n* Building trusted relationships with industry, to inform policy and ensure that the GBR licence is developed and implemented in time for GBR’s creation.\n* On the broader statutory accountabilities: Ownership of wider legislative provisions in the Railways Bill relating to rail sector accountabilities, including GBR’s statutory functions, duties, GBR’s licence, directions and guidance and the role of the ORR.\n* Supporting Ministers through the passage of the Bill including drafting high-quality materials, coordinating responses, and advising ministers on policy matters at pace.\n* Building trusted relationships with stakeholders across government and industry to support policy development and the passage of the Bill in line with the Government’s vision for rail reform.\n\nFor further information on the role, please read the role profile. Please note that the role profile is for information purposes only - whilst all elements are relevant to the role, they may not all be assessed during the recruitment process. This job advert will detail exactly what will be assessed during the recruitment process.",
-  location: 'Birmingham, Leeds, London',
+  location: [
+    {
+      paoText: undefined,
+      saoText: undefined,
+      streetDescription: undefined,
+      locality: undefined,
+      townName: 'Birmingham',
+      postTown: 'Birmingham',
+      postcode: 'B1 1AA',
+      latitude: 52.4862,
+      longitude: -1.8904,
+      formattedAddress: 'Birmingham, B1 1AA'
+    },
+    {
+      paoText: undefined,
+      saoText: undefined,
+      streetDescription: undefined,
+      locality: undefined,
+      townName: 'Leeds',
+      postTown: 'Leeds',
+      postcode: 'LS1 1UR',
+      latitude: 53.7997,
+      longitude: -1.5492,
+      formattedAddress: 'Leeds, LS1 1UR'
+    },
+    {
+      paoText: undefined,
+      saoText: undefined,
+      streetDescription: undefined,
+      locality: undefined,
+      townName: 'London',
+      postTown: 'London',
+      postcode: 'SW1A 2AA',
+      latitude: 51.5074,
+      longitude: -0.1278,
+      formattedAddress: 'London, SW1A 2AA'
+    }
+  ],
   veteranScheme: 'This vacancy is part of the Great Place to Work for Veterans (opens in a new window) initiative.',
   prisonScheme: 'The Civil Service welcomes applications from people who have recently left prison or have an unspent conviction. Read more about prison leaver recruitment (opens in new window).',
   redeploymentScheme: 'The Civil Service also offers a Redeployment Interview Scheme to civil servants who are at risk of redundancy, and who meet the minimum requirements for the advertised vacancy.',
@@ -102,7 +179,18 @@ const jobs: Job[] = [
   assignmentType: 'Permanent', 
   grade: 'Grade 6', 
   description: 'This is a fantastic job for a ...', 
-  location: '2 Horse Guards, Whitehall, London, SW1A 2AX', 
+  location: [{
+    saoText: undefined,
+    paoText: '2 Horse Guards',
+    streetDescription: 'Whitehall',
+    locality: undefined,
+    townName: 'London',
+    postTown: 'London',
+    postcode: 'SW1A 2AX',
+    latitude: 51.5045,
+    longitude: -0.1276,
+    formattedAddress: '2 Horse Guards, Whitehall, London, SW1A 2AX'
+  }],
   organisation: 'College of Policing', 
   id: '9488', 
   title: 'Police Service - Volunteer Curator', 
@@ -114,7 +202,18 @@ const jobs: Job[] = [
   assignmentType: 'Fixed Term Appointment (FTA)',
   grade: 'Senior Executive Office', 
   description: 'This is a fantastic job for a ...', 
-  location: '2 Horse Guards, Whitehall, London, SW1A 2AX', 
+  location: [{
+    saoText: undefined,
+    paoText: '2 Horse Guards',
+    streetDescription: 'Whitehall',
+    locality: undefined,
+    townName: 'London',
+    postTown: 'London',
+    postcode: 'SW1A 2AX',
+    latitude: 51.5045,
+    longitude: -0.1276,
+    formattedAddress: '2 Horse Guards, Whitehall, London, SW1A 2AX'
+  }],
   organisation: 'Home Office', id: '9487', 
   title: 'Project Manager', 
   salary: '£39,000 to £46,200', 
@@ -127,7 +226,18 @@ const jobs: Job[] = [
   assignmentType: 'Apprenticeship', 
   grade: 'Higher Executive Office', 
   description: 'This is a fantastic job for a ...', 
-  location: 'Benton Park Road, Newcastle upon Tyne, NE7 7LX', 
+  location: [{
+    saoText: undefined,
+    paoText: undefined,
+    streetDescription: 'Benton Park Road',
+    locality: undefined,
+    townName: 'Newcastle upon Tyne',
+    postTown: 'Newcastle upon Tyne',
+    postcode: 'NE7 7LX',
+    latitude: 54.9981,
+    longitude: -1.5945,
+    formattedAddress: 'Benton Park Road, Newcastle upon Tyne, NE7 7LX'
+  }],
   organisation: 'HM Revenue and Customs', 
   id: '9489', title: 'Dentist', 
   closingDate: '5 January 2026', 

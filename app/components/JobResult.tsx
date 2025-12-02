@@ -14,7 +14,33 @@ export default function JobResult({
                 </Link>
             </h2>
             <p className="govuk-body-s govuk-!-margin-bottom-1">
-              {job.organisation} · {job.location}
+              {job.organisation}
+              {/* DEBUG: Show JSON of location for troubleshooting */}
+              {/* <pre style={{fontSize:'10px'}}>{JSON.stringify(job.location, null, 2)}</pre> */}
+              {Array.isArray(job.location) && job.location.length > 0 && (
+                <> · {
+                  job.location
+                    .map(loc => {
+                      // If all fields are missing, skip
+                      if (!loc) return '';
+                      const address = [
+                        loc.saoText,
+                        loc.paoText,
+                        loc.streetDescription,
+                        loc.locality,
+                        loc.townName,
+                        loc.postTown,
+                        loc.postcode
+                      ]
+                        .filter(Boolean)
+                        .join(', ');
+                      // If all fields are missing, try toString fallback
+                      return address || Object.values(loc).join(' ').trim();
+                    })
+                    .filter(Boolean)
+                    .join(' | ')
+                }</>
+              )}
             </p>
             {job.assignmentType && (
               <p className="govuk-body-s govuk-!-margin-bottom-1">

@@ -12,7 +12,29 @@ export default function JobDetails({ job }: { job: Job }) {
         </div>
         <div className="govuk-summary-list__row">
           <dt className="govuk-summary-list__key">Location</dt>
-          <dd className="govuk-summary-list__value">{job.location}</dd>
+          <dd className="govuk-summary-list__value">
+            {Array.isArray(job.location) && job.location.length > 0
+              ? job.location
+                  .map(loc => {
+                    const address = [
+                      loc.saoText,
+                      loc.paoText,
+                      loc.streetDescription,
+                      loc.locality,
+                      loc.townName,
+                      loc.postTown,
+                      loc.postcode
+                    ]
+                      .filter(Boolean)
+                      .join(', ');
+                    return address || Object.values(loc).join(' ').trim();
+                  })
+                  .filter(Boolean)
+                  .join(' | ')
+              : typeof job.location === 'string'
+                ? job.location
+                : ''}
+          </dd>
         </div>
         {job.salary && (
           <div className="govuk-summary-list__row">
