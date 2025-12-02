@@ -1,3 +1,5 @@
+import LocationAutocomplete from "./LocationAutocomplete";
+
 export default function HeroSearch() {
   return (
     <div className="govuk-hero">
@@ -21,11 +23,10 @@ export default function HeroSearch() {
                 <label className="govuk-label" htmlFor="l">
                 Location (optional)
                 </label>
-                <input
-                className="govuk-input govuk-!-width-one-half"
-                id="l"
-                name="l"
-                type="text"
+                <LocationAutocomplete
+                  id="l"
+                  name="l"
+                  className="govuk-input govuk-!-width-one-half"
                 />
             </div>
             <button

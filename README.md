@@ -7,6 +7,16 @@ Install govuk frontend:
 npm install govuk-frontend --save
 ```
 
+### Environment Variables
+
+The location autocomplete feature requires an OS Places API key. Create a `.env.local` file in the root directory:
+
+```bash
+OS_PLACES_API_KEY=your_api_key_here
+```
+
+You can get an API key from [OS Data Hub](https://osdatahub.os.uk/).
+
 Run the development server:
 
 ```bash
@@ -62,7 +72,7 @@ The Docker image is optimised for production deployments and can be run on AWS s
 Environment variables can be passed at runtime:
 
 ```bash
-docker run -p 3000:3000 -e NODE_ENV=production csjobs-ui
+docker run -p 3000:3000 -e NODE_ENV=production -e OS_PLACES_API_KEY=your_api_key_here csjobs-ui
 ```
 
 ## Deploy on Vercel
