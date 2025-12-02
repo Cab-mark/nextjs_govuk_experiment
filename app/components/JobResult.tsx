@@ -21,21 +21,28 @@ export default function JobResult({
                 <> · {
                   job.location
                     .map(loc => {
-                      // If all fields are missing, skip
                       if (!loc) return '';
-                      const address = [
-                        loc.saoText,
-                        loc.paoText,
-                        loc.streetDescription,
-                        loc.locality,
-                        loc.townName,
-                        loc.postTown,
-                        loc.postcode
-                      ]
-                        .filter(Boolean)
-                        .join(', ');
-                      // If all fields are missing, try toString fallback
-                      return address || Object.values(loc).join(' ').trim();
+                      // Check for overseasLocations type
+                      if ('countryName' in loc) {
+                        // overseasLocations
+                        return loc.locationDisplay || loc.countryName;
+                      } else {
+                        // fixedLocations
+                        if (loc.formattedAddress) {
+                          return loc.formattedAddress;
+                        }
+                        const address = [
+                          loc.saoText,
+                          loc.paoText,
+                          loc.streetDescription,
+                          loc.locality,
+                          loc.postTown,
+                          loc.postcode
+                        ]
+                          .filter(Boolean)
+                          .join(', ');
+                        return address || Object.values(loc).join(' ').trim();
+                      }
                     })
                     .filter(Boolean)
                     .join(' | ')

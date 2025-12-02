@@ -5,7 +5,7 @@ export interface JobAttachment {
   fileSize?: string;
 }
 
-export interface JobLocation {
+export interface fixedLocations {
   
   // --- applying Bs7666 standard as mandated by Nova --- 
   
@@ -34,12 +34,18 @@ export interface JobLocation {
   fullAddressSearch?: string;   // Keyword-searchable combined field
 }
 
+export interface overseasLocations {
+  countryName: string;
+  countryCode: string;
+  locationDisplay?: string;
+}
+
 export interface Job {
   readonly id: string;
   title: string;
   description: string;
   organisation: string;
-  location: JobLocation [];
+  location: fixedLocations [] | overseasLocations [];
   grade: string;
   assignmentType: string;
   personalSpec: string;
@@ -242,6 +248,42 @@ const jobs: Job[] = [
   id: '9489', title: 'Dentist', 
   closingDate: '5 January 2026', 
   salary: '£99,000' 
+},
+{
+  personalSpec: 'Experience in international project management and cross-cultural communication required.',
+  contacts: true,
+  contactName: 'Maria Gomez',
+  contactEmail: 'maria.gomez@fco.gov.uk',
+  recruitmentEmail: 'recruitment@fco.gov.uk',
+  assignmentType: 'Permanent',
+  grade: 'Grade 7',
+  jobNumbers: 1,
+  description: 'Lead diplomatic initiatives and manage embassy operations in Madrid.',
+  location: [
+    {
+      countryName: 'Spain',
+      countryCode: 'ES',
+      locationDisplay: 'British Embassy, Madrid'
+    }
+  ],
+  organisation: 'Foreign, Commonwealth & Development Office',
+  id: 'es-emb-001',
+  title: 'Embassy Operations Manager',
+  salary: '€60,000',
+  closingDate: '31 January 2026',
+  applyDetail: 'Apply via the FCDO careers portal. Interviews will be held virtually.',
+  summary: 'An exciting opportunity to manage embassy operations and support UK interests in Spain.',
+  benefits: 'Competitive salary, relocation support, and diplomatic status.',
+  diversityStatement: 'We welcome applications from all backgrounds and nationalities.',
+  disabilityConfident: 'We are a Disability Confident employer.',
+  attachments: [
+    {
+      href: 'https://example.com/job-profile-embassy-ops.pdf',
+      docName: 'Job Profile',
+      docFormat: 'pdf',
+      fileSize: '120 kb'
+    }
+  ]
 }
 ]
 

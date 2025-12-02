@@ -16,18 +16,29 @@ export default function JobDetails({ job }: { job: Job }) {
             {Array.isArray(job.location) && job.location.length > 0
               ? job.location
                   .map(loc => {
-                    const address = [
-                      loc.saoText,
-                      loc.paoText,
-                      loc.streetDescription,
-                      loc.locality,
-                      loc.townName,
-                      loc.postTown,
-                      loc.postcode
-                    ]
-                      .filter(Boolean)
-                      .join(', ');
-                    return address || Object.values(loc).join(' ').trim();
+                    if (!loc) return '';
+                    // Check for overseasLocations type
+                    if ('countryName' in loc) {
+                      // overseasLocations
+                      return loc.locationDisplay || loc.countryName;
+                    } else {
+                      // fixedLocations
+                      if (loc.formattedAddress) {
+                        return loc.formattedAddress;
+                      }
+                      const address = [
+                        loc.saoText,
+                        loc.paoText,
+                        loc.streetDescription,
+                        loc.locality,
+                        loc.townName,
+                        loc.postTown,
+                        loc.postcode
+                      ]
+                        .filter(Boolean)
+                        .join(', ');
+                      return address || Object.values(loc).join(' ').trim();
+                    }
                   })
                   .filter(Boolean)
                   .join(' | ')
