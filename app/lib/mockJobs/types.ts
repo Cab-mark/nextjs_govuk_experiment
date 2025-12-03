@@ -45,7 +45,7 @@ export interface Job {
   title: string;
   description: string;
   organisation: string;
-  location: fixedLocations [] | overseasLocations [];
+  location: fixedLocations[] | overseasLocations[];
   grade: string;
   assignmentType: string;
   personalSpec: string;
