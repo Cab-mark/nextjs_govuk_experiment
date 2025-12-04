@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getJobById, Job } from "../../lib/mockJobs";
+import { getJobById, Job } from "../../lib/jobs";
 import JobDetails from "../../components/JobDetails";
 import JobAdvert from "@/app/components/JobAdvert";
 

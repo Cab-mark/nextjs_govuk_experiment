@@ -1,4 +1,4 @@
-import { Job } from '../lib/mockJobs';
+import { Job } from '../lib/jobs';
 
 export default function JobDetails({ job }: { job: Job }) {
   return (

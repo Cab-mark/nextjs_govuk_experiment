@@ -2,7 +2,7 @@ import Filter from "../components/Filter";
 import HeroHorizontal from "../components/HeroHorizontal";
 import JobResult from "../components/JobResult";
 import Pagination from "../components/Pagination";
-import { getPaginatedJobs } from "../lib/mockJobs";
+import { getPaginatedJobs } from "../lib/jobs";
 
 export const metadata = {
   title: 'Search results',

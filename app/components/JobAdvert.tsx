@@ -1,4 +1,4 @@
-import { Job } from '../lib/mockJobs';
+import { Job } from '../lib/jobs';
 
 function renderTextWithBullets(blob: string, keyPrefix: string = "") {
   if (!blob) return null;

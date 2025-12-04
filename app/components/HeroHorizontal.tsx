@@ -12,7 +12,7 @@ function HeroHorizontalInner() {
   const searchParams = useSearchParams();
   const keyword = searchParams.get('q') || '';
   const location = searchParams.get('l') || '';
-  const { total } = require('../lib/mockJobs').getJobSearchResponse();
+  const { total } = require('../lib/jobs').getJobSearchResponse();
   return (
     <div className="govuk-hero--light">
       <div className="govuk-width-container">

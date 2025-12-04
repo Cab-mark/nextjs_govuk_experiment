@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Job } from '../lib/mockJobs';
+import { Job } from '../lib/jobs';
 
 export default function JobResult({ 
   jobs}: { jobs: Job[] }) {
