@@ -114,16 +114,6 @@ export default function Filter() {
           </div>
         </div>
       </div>
-      <style jsx>{`
-        @media (min-width: 769px) {
-          .filter-mobile { display: none; }
-          .filter-desktop { display: block; }
-        }
-        @media (max-width: 768px) {
-          .filter-mobile { display: block; }
-          .filter-desktop { display: none; }
-        }
-      `}</style>
     </>
   );
 }
