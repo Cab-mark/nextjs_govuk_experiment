@@ -1,152 +1,43 @@
-// Type definitions for job board
+/**
+ * Type definitions for job board
+ * 
+ * @deprecated This file is deprecated. Import types from 'src/types/domain' instead.
+ * These exports are maintained for backward compatibility during migration.
+ * TODO: Remove this file after all consumers have migrated to src/types/domain
+ * @see docs/TYPE_REFACTOR.md for migration guide
+ */
 
-export interface JobAttachment {
-  href: string;
-  docName: string;
-  docFormat: string;
-  fileSize?: string;
-}
+// Re-export all domain types for backward compatibility
+export {
+  Approach,
+  Assignments,
+  Grade,
+  Profession,
+  DCStatus,
+  type JobAttachment,
+  type Salary,
+  type Job,
+  type JobSearchResponse,
+  type FixedLocation,
+  type OverseasLocation,
+  type JobLocation,
+  isOverseasLocation,
+  isFixedLocation,
+} from '../../src/types/domain';
 
-export interface fixedLocations {
-  uprn?: string;
-  saoText?: string;
-  paoText?: string;
-  streetDescription?: string;
-  locality?: string;
-  townName?: string;
-  postTown?: string;
-  postcode?: string;
-  latitude?: number;
-  longitude?: number;
-  formattedAddress?: string;
-  fullAddressSearch?: string;
-}
+// Deprecated type aliases for backward compatibility
+// TODO: Remove these after migration - see docs/TYPE_REFACTOR.md
 
-export enum Approach {
-  Internal = "Internal",
-  AcrossGovernment = "Across Government",
-  External = "External"
-}
+import type { FixedLocation, OverseasLocation } from '../../src/types/domain';
 
-export enum Assignments {
-  Apprentice = "Apprentice",
-  FixedTermAppointment = "Fixed Term Appointment (FTA)",
-  Loan = "Loan",
-  Secondment = "Secondment",
-  Permanent = "Permanent"
-}
+/**
+ * @deprecated Use FixedLocation from 'src/types/domain' instead
+ * TODO: Remove after migration - see docs/TYPE_REFACTOR.md
+ */
+export type fixedLocations = FixedLocation;
 
-export enum Grade {
-  scs4 = "Senior Civil Service - Permanent Secretary",
-  scs3 = "Senior Civil Service - Director General (PB3)",
-  scs2 = "Senior Civil Service - Director (PB2)",
-  scs1 = "Senior Civil Service - Deputy Director (PB1/1A)",
-  grade6 = "Grade 6 Equivalent",
-  grade7 = "Grade 7 Equivalent",
-  seo = "Senior Executive Officer (SEO) Equivalent",
-  heo = "Higher Executive Officer (HEO) Equivalent",
-  eo = "Executive Officer (EO) Equivalent",
-  ao = "Administrative Officer (AO) Equivalent",
-  aa = "Administrative Assistant (AA) Equivalent"
-}
-
-export enum Profession {
-  Actuary = "Actuary",
-  Commercial = "Commercial",
-  Communications = "Communications",
-  CorporateFinance = "Corporate Finance",
-  CounterFraud = "Counter Fraud",
-  DigitalAndData =  "Digital and Data",
-  Economics = "Economics",
-  Finance = "Finance",
-  Geography = "Geography",
-  HumanResources = "Human Resources",
-  IntelligenceAnalysis = "Intelligence Analysis",
-  InternalAudit = "Internal Audit",
-  InternationalTrade = "International Trade",
-  KnowledgeAndInformationManagement = "Knowledge and Information Management",
-  Legal = "Legal",
-  Clinical = "Clinical",
-  OccupationalPsychology = "Occupational Psychology",
-  OperationalDelivery = "Operational Delivery",
-  OperationalResearch = "Operational Research",
-  Planning = "Planning",
-  PlanningInspection = "Planning Inspection",
-  Policy = "Policy",
-  ProjectDelivery = "Project Delivery",
-  Property = "Property",
-  RiskManagement = "Risk Management",
-  ScienceAndEngineering = "Science and Engineering",
-  Security = "Security",
-  SocialResearch = "Social Research",
-  Statistics = "Statistics",
-  Tax = "Tax",
-  Veterinary = "Veterinary", 
-}
-
-export enum DCStatus {
-  Committed = "Committed",
-  Employer = "Disability Confident Employer",
-  Leader = "Disability Confident Leader"
-}
-
-export interface overseasLocations {
-  countryName: string;
-  countryCode: string;
-  locationDisplay?: string;
-}
-
-export interface Salary {
-  minimum: number;
-  maximum?: number;
-  currency: string;
-  currencySymbol?: string;
-  salaryDetails?: string;
-}
-
-export interface Job {
-  readonly id: string;
-  approach: Approach;
-  title: string;
-  description: string;
-  organisation: string;
-  location: fixedLocations[] | overseasLocations[];
-  grade: Grade | string;
-  assignmentType: Assignments;
-  personalSpec: string;
-  applyDetail: string;
-  closingDate: Date;
-  profession: Profession;  
-  recruitmentEmail: string;
-  contactName?: string;
-  contactEmail?: string;
-  contactPhone?: string;
-  nationalityRequirement?: string;
-  summary?: string;
-  applyUrl?: URL;
-  benefits?: string;
-  salary?: Salary;
-  jobNumbers?: number;
-  successProfileDetails?: string;
-  diversityStatement?: string;
-  disabilityConfident?: string;
-  dcStatus?: DCStatus;
-  redeploymentScheme?: string;
-  prisonScheme?: string;
-  veteranScheme?: string;
-  criminalRecordCheck?: string;
-  complaintsInfo?: string;
-  workingForTheCivilService?: string;
-  eligibilityCheck?: string;
-  attachments?: JobAttachment[];
-}
-
-export interface JobSearchResponse {
-  results: Job[];
-  total: number;
-  page: number;
-  pageSize: number;
-  totalPages: number;
-  query: string | null;
-  appliedFilters: string | null;
-}
+/**
+ * @deprecated Use OverseasLocation from 'src/types/domain' instead
+ * TODO: Remove after migration - see docs/TYPE_REFACTOR.md
+ */
+export type overseasLocations = OverseasLocation;
