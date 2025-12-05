@@ -50,17 +50,18 @@ export default function JobAdvert({ job }: { job: Job }) {
       </>
        )}
 
-          <h2 id="contacts" className="govuk-heading-l">Contacts us</h2>
-       { job.contactName &&(
-          <p className="govuk-body">Name: {job.contactName}</p>
-      )}  
-
-       { job.contactEmail &&(
-          <p className="govuk-body">Email: {job.contactEmail}</p>
-      )}
-
-          <p className="govuk-body">Recruitment team: {job.recruitmentEmail}</p>
-
+          <h2 id="contacts" className="govuk-heading-l">Contact us</h2>
+          {Array.isArray(job.contacts) && job.contacts.length > 0 && (() => {
+            const contact = job.contacts[0];
+            return (
+              <>
+                {contact.contactName && <p className="govuk-body"><strong>Name:</strong> {contact.contactName}</p>}
+                {contact.contactEmail && <p className="govuk-body"><strong>Email:</strong> <a href={`mailto:${contact.contactEmail}`}>{contact.contactEmail}</a></p>}
+                {contact.contactPhone && <p className="govuk-body"><strong>Phone:</strong> {contact.contactPhone}</p>}
+              </>
+            );
+          })()}
+          <p className="govuk-body"><strong>Recruitment team:</strong> <a href={`mailto:${job.recruitmentEmail}`}>{job.recruitmentEmail}</a></p>
       <h2 id="before-you-apply" className="govuk-heading-l">Before you apply</h2>
       <p className="govuk-body">You must read the following information before applying for this job.</p>
       <div className="govuk-accordion" data-module="govuk-accordion" id="accordion-default">

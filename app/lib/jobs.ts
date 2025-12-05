@@ -1,5 +1,6 @@
 export type { Job } from "./jobTypes";
-import type { Job, JobAttachment, fixedLocations, overseasLocations, JobSearchResponse } from "./jobTypes";
+export type { JobResultItem } from "./jobTypes";
+import type { Job, JobSearchResponse } from "./jobTypes";
 let jobs: Job[];
 if (process.env.NODE_ENV === "development") {
   jobs = require("./jobs.local").jobsData;

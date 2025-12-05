@@ -1,3 +1,16 @@
+// Subset type for JobResult component
+export interface JobResultItem {
+  readonly id: string;
+  readonly externalId: string;
+  title: string;
+  organisation: string;
+  location: fixedLocations[] | overseasLocations[];
+  assignmentType?: Assignments;
+  salary?: Salary;
+  closingDate?: Date | string;
+  profession?: Profession;
+  approach?: Approach;
+}
 // Type definitions for job board
 
 export interface JobAttachment {
@@ -41,13 +54,13 @@ export enum Grade {
   scs3 = "Senior Civil Service - Director General (PB3)",
   scs2 = "Senior Civil Service - Director (PB2)",
   scs1 = "Senior Civil Service - Deputy Director (PB1/1A)",
-  grade6 = "Grade 6 Equivalent",
-  grade7 = "Grade 7 Equivalent",
-  seo = "Senior Executive Officer (SEO) Equivalent",
-  heo = "Higher Executive Officer (HEO) Equivalent",
-  eo = "Executive Officer (EO) Equivalent",
-  ao = "Administrative Officer (AO) Equivalent",
-  aa = "Administrative Assistant (AA) Equivalent"
+  grade6 = "Grade 6",
+  grade7 = "Grade 7",
+  seo = "Senior Executive Officer (SEO)",
+  heo = "Higher Executive Officer (HEO)",
+  eo = "Executive Officer (EO)",
+  ao = "Administrative Officer (AO)",
+  aa = "Administrative Assistant (AA)"
 }
 
 export enum Profession {
@@ -104,8 +117,15 @@ export interface Salary {
   salaryDetails?: string;
 }
 
+export interface Contacts {
+  contactName?: string;
+  contactEmail?: string;
+  contactPhone?: string;
+}
+
 export interface Job {
   readonly id: string;
+  readonly externalId?: string;
   approach: Approach;
   title: string;
   description: string;
@@ -118,9 +138,7 @@ export interface Job {
   closingDate: Date;
   profession: Profession;  
   recruitmentEmail: string;
-  contactName?: string;
-  contactEmail?: string;
-  contactPhone?: string;
+  contacts?: Contacts[];
   nationalityRequirement?: string;
   summary?: string;
   applyUrl?: URL;

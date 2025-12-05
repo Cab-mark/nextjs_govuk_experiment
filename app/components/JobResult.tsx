@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { Job } from '../lib/jobs';
+import { JobResultItem } from '../lib/jobs';
 
-export default function JobResult({ jobs }: { jobs: Job[] }) {
+export default function JobResult({ jobs }: { jobs: JobResultItem[] }) {
   if (!jobs || jobs.length === 0) {
     return (
       <div className="govuk-!-margin-bottom-6">

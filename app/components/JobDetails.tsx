@@ -78,6 +78,12 @@ export default function JobDetails({ job }: { job: Job }) {
               </dd>
             </div>
           )}
+                {job.grade && (
+                  <div className="govuk-summary-list__row">
+                    <dt className="govuk-summary-list__key">Grade</dt>
+                    <dd className="govuk-summary-list__value">{job.grade}</dd>
+                  </div>
+                )}
         <div className="govuk-summary-list__row">
             <dt className="govuk-summary-list__key">Contract type</dt>
             <dd className="govuk-summary-list__value">{job.assignmentType}</dd>

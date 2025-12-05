@@ -4,8 +4,8 @@ import type { Job } from "./jobTypes";
 import { Approach, Assignments, Profession, DCStatus } from "./jobTypes";
 
 export const jobsData: Job[] = [
-
 { approach: Approach.Internal,
+  externalId: 'O-9877',
   personalSpec: 'Some personal specification text',
   applyDetail: 'Some application detail text',
   recruitmentEmail: 'recruitment@civilservice.gov.uk',
@@ -32,11 +32,13 @@ export const jobsData: Job[] = [
   salary: { minimum: 45000, currency: 'GBP', currencySymbol: '£' },
   closingDate: new Date('2025-12-20')
 },
-
 { approach: Approach.AcrossGovernment,
+  externalId: 'S-987',
   applyUrl: new URL('https://jobs.justice.gov.uk/careers/JobDetail/7334?entityId=7334'),
-  contactName: 'Matthew Murray',
-  contactEmail: 'Matthew.murray@dft.gov.uk',
+  contacts: [
+    { contactName: 'Matthew Murray', contactEmail: 'Matthew.murray@dft.gov.uk' },
+    { contactName: 'Will Blunden', contactEmail: 'william.blunden@dft.gov.uk' }
+  ],
   recruitmentEmail: 'dftrecruitment.grs@cabinetoffice.gov.uk',
   personalSpec: 'Required experience:\nTo be successful in this role you will need to have the following experience:\n\n* Experience in developing and delivering complex policy, ensuring alignment with departmental objectives and contributing to effective outcomes.\n* Experience working in a fast-paced, high-profile environment and managing competing priorities.\n* Experience in building and maintaining effective relationships with industry and cross-government stakeholders, fostering collaboration and driving shared goals.\n* Experience in supporting the development and scrutiny of legislation, including drafting briefing materials. Additional Information\n\nFor more information about the GBR licence role, please email Matthew Murray - matthew.murray@dft.gov.uk\nFor more information about the Bill-facing role please email Will Blunden - william.blunden@dft.gov.uk\n\nAll staff, including fixed term appointees, who have successfully completed their probation period are eligible to apply.\n\nIn alignment with internal Civil Service Wide opportunities, staff will not be eligible to apply if they have a current formal written warning for performance, conduct or attendance. This will include individuals who are in a ‘sustained period’ following an attendance warning. Staff who receive a formal warning subsequent to their application will also be withdrawn from the process.\n\nWorking Hours, Locations and Travel\n\nPlease note these roles include a parliamentary facing element and will require you to be available to meet demanding deadlines during Bill passage. You may be required to work unsociable hours, schedule leave around Parliamentary sittings and frequently travel to London.\n\nThese roles are suitable for hybrid working, which is a non-contractual arrangement where a combination of workplace and home-based working can be accommodated subject to business requirements.\n\nThe expectation at present is a minimum of 60% of your working time a month will be spent at either your designated workplace (one of the locations cited in the advert) or, when required for business reasons, in another office/work location/visiting stakeholders. Your designated workplace will be your contractual place of work. There may be occasions where you are required to attend above the minimum expectation.\n\nIf you have a question about hybrid working, part time/job share hours, flexible working, travelling for work, or require a reasonable adjustment, please contact the Vacancy Holder during the recruitment process to avoid possible disappointment later in the process should your working arrangements not be compatible with the requirements of the role (see below for contact details).\n\nVisa Sponsorship\n\nPlease note that we do not hold a UK Visa & Immigration (UKVI) Skilled Worker Licence sponsor and are unable to sponsor any individuals for Skilled Worker Sponsorship. Candidates must ensure they have the appropriate rights to work in the UK before application.',
   applyDetail: "How to apply:\n\nOur selection process ensures a comprehensive assessment of each applicant's qualifications, skills, and potential fit within our organisation.\n\nThe selection process for this role will be:\nStage 1: Sift of CV and personal statement\nStage 2: Interview\n\nStage 1: Sift\n\nAt sift, you will be assessed against the following Success Profile elements:\n\n* Experience – you will be asked to provide a CV (unlimited wordcount) and personal statement (750-word count). Further details around what this will entail are listed on the application form. Please provide evidence of your Experience of the following:\n* Experience in developing and delivering complex policy, ensuring alignment with departmental objectives and contributing to effective outcomes.\n* Experience working in a fast-paced, high-profile environment and managing competing priorities.\n* Experience in building and maintaining effective relationships with industry and cross-government stakeholders, fostering collaboration and driving shared goals.\n* Experience in supporting the development and scrutiny of legislation, including drafting briefing materials.\n\nThe sift will take place on 8th & 9th December 2025.\n\nStage 2: Interview\n\nAt interview stage, you will be assessed against the following Success Profile elements:\n* Behaviours – Communicating & Influencing, Delivering at Pace, Making Effective Decisions and Working Together.\n* Strengths\n\nThe interviews will take place week commencing 12th January 2026.\nThis interview will be conducted online via Microsoft Teams. Further details will be provided to you should you be selected for interview.\n\nYou can find out more about our hiring process, how to apply, and application and interview guidance on our careers site (opens in a new window).\nPlease note that we will try to meet the dates set out in the advert. There may be occasions when these dates will change.\n\nFurther information on the selection process\n\nWe will also hold a 12-month reserve list for this role, which may lead to potential opportunities beyond the role you applied for. You can read more about our reserve lists here.\n\nDuring your application, you should indicate which location(s) you wish to be considered for and, if successful, you will be placed on an individual list of candidates for each location. Candidates will be held on that list and drawn from it in merit order. We advise you to carefully consider which locations you wish to be considered for. If you decline an offer for a location you have expressed a preference in or have expressed an interest in more than one location and accept an offer, you will be withdrawn from any lists you may be held on. We may also offer candidates a location that they have not expressed a preference for where we have the requirement to do so but this will again be done on the basis of your place in the overall merit order and, in this event, you will not be removed from the list if you decline.\n\nAI Tools and Platforms\n\nArtificial Intelligence can be a useful tool to support your application, however, all examples and statements provided must be truthful, factually accurate and taken directly from your own experience. Where plagiarism has been identified (presenting the ideas and experiences of others, or generated by artificial intelligence, as your own) applications may be withdrawn and internal candidates may be subject to disciplinary action. Please see our candidate guidance for more information on appropriate and inappropriate use - Artificial intelligence and recruitment , Civil Service Careers\n\nReasonable Adjustments\n\nAs a Disability Confident Leader employer, we are committed to ensuring that the recruitment process is fair, accessible and allows all candidates to perform at their best. If a person with a visible or non-visible disability is substantially disadvantaged, we have a duty to make reasonable changes to our processes.\n\nComplete the “Assistance required” section in the “Additional requirements” page of your application form to tell us what changes or help you might need during the recruitment process. For instance, you may need wheelchair access at an interview, or if you’re deaf, a Language Service Professional.\n\nIf you need a reasonable adjustment so that you can complete your application, you should contact Government Recruitment Service via dftrecruitment.grs@cabinetoffice.gov.uk as soon as possible before the closing date to discuss your needs.\n\nDocument Accessibility\n\nIf you are experiencing accessibility problems with any attachments on this advert, please contact the email address in the 'Contact point for applicants' section.\nThis job advert contains links to the DfT Careers website. Our website provides useful guidance and information that can support you during the application process. If you cannot access the information on our website for any reason, please email DRGComms@dft.gov.uk for assistance.\n\nFurther Information\n\nFor more information about how we hire, and for useful tips on submitting your application for this role, visit the How We Hire page of our DfT Careers website. You can find detailed information about the recruitment process and what to expect when applying for a role.\n\nPre-employment Checking\n\nApplicants who are successful at interview will be, as part of pre-employment screening, subject to a check on the Internal Fraud Database (IFD). This check will provide information about employees who have been dismissed for fraud or dishonesty offences. This check also applies to employees who resign or otherwise leave before being dismissed for fraud or dishonesty had their employment continued. Any applicant’s details held on the IFD will be refused employment.\nA candidate is not eligible to apply for a role within the Civil Service if the application is made within a 5-year period following a dismissal for carrying out internal fraud against government.\n\nFeedback\n\nFeedback will only be provided if you attend an interview or assessment.",
@@ -109,6 +111,7 @@ export const jobsData: Job[] = [
   ]
 },
 { approach: Approach.External, 
+  externalId: 'O-8977',
   personalSpec: 'Some personal specification text',
   applyDetail: 'Some application detail text',
   recruitmentEmail: 'recruitment@civilservice.gov.uk',
@@ -131,8 +134,10 @@ export const jobsData: Job[] = [
   organisation: 'College of Policing', 
   id: '9488', 
   title: 'Police Service - Volunteer Curator', 
-  closingDate: new Date('2025-12-20') },
+  closingDate: new Date('2025-12-20') 
+},
 { approach: Approach.External, 
+  externalId: 'M-0091',
   personalSpec: 'Some personal specification text',
   applyDetail: 'Some application detail text',
   recruitmentEmail: 'recruitment@civilservice.gov.uk',
@@ -178,14 +183,17 @@ export const jobsData: Job[] = [
     formattedAddress: 'Benton Park Road, Newcastle upon Tyne, NE7 7LX'
   }],
   organisation: 'HM Revenue and Customs', 
+  externalId: 'O-2024',
   id: '9489', title: 'Dentist', 
   closingDate: new Date('2026-01-05'), 
     salary: { minimum: 99000, currency: 'GBP', currencySymbol: '£' } 
 },
 { approach: Approach.External,
+  externalId: 'O-987',
   personalSpec: 'Experience in international project management and cross-cultural communication required.',
-  contactName: 'Maria Gomez',
-  contactEmail: 'maria.gomez@fco.gov.uk',
+  contacts: [
+    { contactName: 'Maria Gomez', contactEmail: 'maria.gomez@fco.gov.uk' }
+  ],
   recruitmentEmail: 'recruitment@fco.gov.uk',
   assignmentType: Assignments.Permanent,
   grade: 'Grade 7',
@@ -219,6 +227,7 @@ export const jobsData: Job[] = [
   ]
 },
 { approach: Approach.External,
+  externalId: 'U-21',
   personalSpec: 'Strong analytical skills required.',
   applyDetail: 'Apply online.',
   recruitmentEmail: 'recruitment@hmrc.gov.uk',
@@ -241,9 +250,11 @@ export const jobsData: Job[] = [
   closingDate: new Date('2026-01-10')
 },
 { approach: Approach.External,
+  externalId: 'M-9874',
   personalSpec: 'Experience in digital transformation.',
-  contactName: 'John Smith',
-  contactEmail: 'john.smith@cabinetoffice.gov.uk',
+  contacts: [
+    { contactName: 'John Smith', contactEmail: 'john.smith@cabinetoffice.gov.uk' }
+  ],
   recruitmentEmail: 'jobs@cabinetoffice.gov.uk',
   assignmentType: Assignments.FixedTermAppointment,
   grade: 'Grade 7',
@@ -265,6 +276,7 @@ export const jobsData: Job[] = [
   applyDetail: ""
 },
 { approach: Approach.External,
+  externalId: 'D-9877',
   personalSpec: 'Excellent communication skills.',
   applyDetail: 'Submit CV and cover letter.',
   recruitmentEmail: 'recruitment@mod.gov.uk',
@@ -287,9 +299,11 @@ export const jobsData: Job[] = [
   closingDate: new Date('2026-01-20')
 },
 { approach: Approach.External,
+  externalId: 'S-8447',
   personalSpec: 'Project management experience.',
-  contactName: 'Sarah Lee',
-  contactEmail: 'sarah.lee@homeoffice.gov.uk',
+  contacts: [
+    { contactName: 'Sarah Lee', contactEmail: 'sarah.lee@homeoffice.gov.uk' }
+  ],
   recruitmentEmail: 'jobs@homeoffice.gov.uk',
   assignmentType: Assignments.Permanent,
   grade: 'SEO',
@@ -311,9 +325,11 @@ export const jobsData: Job[] = [
   applyDetail: ""
 },
 { approach: Approach.External,
+  externalId: 'O-7877',
   personalSpec: 'Experience in international relations.',
-  contactName: 'Pierre Dubois',
-  contactEmail: 'pierre.dubois@fco.gov.uk',
+  contacts: [
+    { contactName: 'Pierre Dubois', contactEmail: 'pierre.dubois@fco.gov.uk' }
+  ],
   recruitmentEmail: 'recruitment@fco.gov.uk',
   assignmentType: Assignments.Permanent,
   grade: 'Grade 7',
@@ -333,6 +349,7 @@ export const jobsData: Job[] = [
   applyDetail: ""
 },
 { approach: Approach.External,
+  externalId: 'S-8947',
   personalSpec: 'Legal background preferred.',
   applyDetail: 'Apply via portal.',
   recruitmentEmail: 'recruitment@justice.gov.uk',
@@ -355,9 +372,11 @@ export const jobsData: Job[] = [
   closingDate: new Date('2026-02-05')
 },
 { approach: Approach.External,
+  externalId: 'O-4883',
   personalSpec: 'Experience in education policy.',
-  contactName: 'Emily Clark',
-  contactEmail: 'emily.clark@education.gov.uk',
+  contacts: [
+    { contactName: 'Emily Clark', contactEmail: 'emily.clark@education.gov.uk' }
+  ],
   recruitmentEmail: 'jobs@education.gov.uk',
   assignmentType: Assignments.FixedTermAppointment,
   grade: 'Grade 7',
@@ -379,6 +398,7 @@ export const jobsData: Job[] = [
   applyDetail: ""
 },
 { approach: Approach.External,
+  externalId: 'O-1234',
   personalSpec: 'Experience in healthcare management.',
   applyDetail: 'Apply online.',
   recruitmentEmail: 'jobs@nhs.uk',
@@ -402,8 +422,9 @@ export const jobsData: Job[] = [
 },
 { approach: Approach.External,
   personalSpec: 'Experience in transport planning.',
-  contactName: 'Tom Evans',
-  contactEmail: 'tom.evans@dft.gov.uk',
+  contacts: [
+    { contactName: 'Tom Evans', contactEmail: 'tom.evans@dft.gov.uk' }
+  ],
   recruitmentEmail: 'jobs@dft.gov.uk',
   assignmentType: Assignments.Permanent,
   grade: 'SEO',
@@ -419,15 +440,18 @@ export const jobsData: Job[] = [
   }],
   organisation: 'Department for Transport',
   id: 'dft-002',
+  externalId: 'U-7890',
   title: 'Transport Planner',
     salary: { minimum: 54000, currency: 'GBP', currencySymbol: '£' },
   closingDate: new Date('2026-02-20'),
   applyDetail: ""
 },
 {
+  externalId: 'O-1569',
   personalSpec: 'Experience in overseas development.',
-  contactName: 'Aisha Khan',
-  contactEmail: 'aisha.khan@fco.gov.uk',
+  contacts: [
+    { contactName: 'Aisha Khan', contactEmail: 'aisha.khan@fco.gov.uk' }
+  ],
   recruitmentEmail: 'recruitment@fco.gov.uk',
   assignmentType: Assignments.Permanent,
   grade: 'Grade 7',
