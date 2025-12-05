@@ -19,6 +19,10 @@ import type {
   OverseasLocation,
   Salary,
   JobSearchResponse,
+  DCStatus,
+} from '../../types/domain';
+
+import {
   Approach,
   Assignments,
   Profession,
@@ -117,14 +121,14 @@ function formatFileSize(bytes: number): string {
  */
 export function mapContractApproachToDomain(approach: string): Approach {
   const approachMap: Record<string, Approach> = {
-    'INTERNAL': 'Internal' as Approach,
-    'Internal': 'Internal' as Approach,
-    'ACROSS_GOVERNMENT': 'Across Government' as Approach,
-    'Across Government': 'Across Government' as Approach,
-    'EXTERNAL': 'External' as Approach,
-    'External': 'External' as Approach,
+    'INTERNAL': Approach.Internal,
+    'Internal': Approach.Internal,
+    'ACROSS_GOVERNMENT': Approach.AcrossGovernment,
+    'Across Government': Approach.AcrossGovernment,
+    'EXTERNAL': Approach.External,
+    'External': Approach.External,
   };
-  return (approachMap[approach] || approach) as Approach;
+  return approachMap[approach] || Approach.External;
 }
 
 /**
@@ -132,18 +136,48 @@ export function mapContractApproachToDomain(approach: string): Approach {
  */
 export function mapContractAssignmentToDomain(assignment: string): Assignments {
   const assignmentMap: Record<string, Assignments> = {
-    'APPRENTICE': 'Apprentice' as Assignments,
-    'Apprentice': 'Apprentice' as Assignments,
-    'FIXED_TERM': 'Fixed Term Appointment (FTA)' as Assignments,
-    'Fixed Term Appointment (FTA)': 'Fixed Term Appointment (FTA)' as Assignments,
-    'LOAN': 'Loan' as Assignments,
-    'Loan': 'Loan' as Assignments,
-    'SECONDMENT': 'Secondment' as Assignments,
-    'Secondment': 'Secondment' as Assignments,
-    'PERMANENT': 'Permanent' as Assignments,
-    'Permanent': 'Permanent' as Assignments,
+    'APPRENTICE': Assignments.Apprentice,
+    'Apprentice': Assignments.Apprentice,
+    'FIXED_TERM': Assignments.FixedTermAppointment,
+    'Fixed Term Appointment (FTA)': Assignments.FixedTermAppointment,
+    'LOAN': Assignments.Loan,
+    'Loan': Assignments.Loan,
+    'SECONDMENT': Assignments.Secondment,
+    'Secondment': Assignments.Secondment,
+    'PERMANENT': Assignments.Permanent,
+    'Permanent': Assignments.Permanent,
   };
-  return (assignmentMap[assignment] || assignment) as Assignments;
+  return assignmentMap[assignment] || Assignments.Permanent;
+}
+
+/**
+ * Maps contract profession string to domain Profession enum
+ */
+export function mapContractProfessionToDomain(profession: string): Profession {
+  // Check if the value is already a valid Profession enum value
+  const professionValues = Object.values(Profession);
+  if (professionValues.includes(profession as Profession)) {
+    return profession as Profession;
+  }
+  // Default to Policy if unknown
+  return Profession.Policy;
+}
+
+/**
+ * Maps contract DC status string to domain DCStatus enum
+ */
+export function mapContractDCStatusToDomain(dcStatus: string | undefined): DCStatus | undefined {
+  if (!dcStatus) return undefined;
+  
+  const dcStatusMap: Record<string, DCStatus> = {
+    'COMMITTED': 'Committed' as DCStatus,
+    'Committed': 'Committed' as DCStatus,
+    'EMPLOYER': 'Disability Confident Employer' as DCStatus,
+    'Disability Confident Employer': 'Disability Confident Employer' as DCStatus,
+    'LEADER': 'Disability Confident Leader' as DCStatus,
+    'Disability Confident Leader': 'Disability Confident Leader' as DCStatus,
+  };
+  return dcStatusMap[dcStatus];
 }
 
 // ============================================================================
@@ -166,7 +200,7 @@ export function mapContractJobToDomain(contractJob: ContractJob): Job {
     personalSpec: contractJob.personal_specification,
     applyDetail: contractJob.application_details,
     closingDate: new Date(contractJob.closing_date),
-    profession: contractJob.profession_type as Profession,
+    profession: mapContractProfessionToDomain(contractJob.profession_type),
     recruitmentEmail: contractJob.recruitment_email,
     contactName: contractJob.contact_name,
     contactEmail: contractJob.contact_email,
@@ -182,7 +216,7 @@ export function mapContractJobToDomain(contractJob: ContractJob): Job {
     successProfileDetails: contractJob.success_profile_details,
     diversityStatement: contractJob.diversity_statement,
     disabilityConfident: contractJob.disability_confident_status,
-    dcStatus: contractJob.dc_status_level as Job['dcStatus'],
+    dcStatus: mapContractDCStatusToDomain(contractJob.dc_status_level),
     redeploymentScheme: contractJob.redeployment_scheme_info,
     prisonScheme: contractJob.prison_scheme_info,
     veteranScheme: contractJob.veteran_scheme_info,

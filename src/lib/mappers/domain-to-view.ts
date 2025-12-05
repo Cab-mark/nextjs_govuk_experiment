@@ -12,8 +12,7 @@ import type {
   JobSearchResponse,
   JobLocation,
   Salary,
-  isOverseasLocation,
-  isFixedLocation,
+  JobAttachment,
 } from '../../types/domain';
 
 import type {
@@ -85,6 +84,7 @@ export function formatLocationDisplay(locations: JobLocation[]): string {
         return loc.formattedAddress;
       }
 
+      // Fallback: build address from known fields
       const address = [
         loc.saoText,
         loc.paoText,
@@ -96,7 +96,7 @@ export function formatLocationDisplay(locations: JobLocation[]): string {
         .filter(Boolean)
         .join(', ');
 
-      return address || Object.values(loc).filter(v => v && typeof v === 'string').join(' ').trim();
+      return address || '';
     })
     .filter(Boolean)
     .join(' | ');
@@ -180,7 +180,7 @@ export function mapJobToAdvertView(job: Job): JobAdvertView {
 /**
  * Maps a domain JobAttachment to an AttachmentView
  */
-function mapAttachmentToView(attachment: { href: string; docName: string; docFormat: string; fileSize?: string }): AttachmentView {
+function mapAttachmentToView(attachment: JobAttachment): AttachmentView {
   return {
     href: attachment.href,
     name: attachment.docName || 'Attachment',

@@ -10,9 +10,9 @@
 import type { DataProvider } from './data-provider';
 import type { Job, JobSearchResponse } from '../../types/domain';
 
-// Import the existing local jobs data
-// Note: This import path will be updated when we migrate app/lib/jobs.local.ts
-import { jobsData } from '../../../app/lib/jobs.local';
+// Import the existing local jobs data using absolute path
+// TODO: Consider moving mock data to src/lib/data/mock-data.ts for better organization
+import { jobsData } from '@/app/lib/jobs.local';
 
 /**
  * MockProvider - provides job data from local mock data

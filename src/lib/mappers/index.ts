@@ -13,6 +13,8 @@ export {
   mapContractAttachmentToDomain,
   mapContractApproachToDomain,
   mapContractAssignmentToDomain,
+  mapContractProfessionToDomain,
+  mapContractDCStatusToDomain,
 } from './contract-to-domain';
 
 // Domain to View mappers

@@ -8,6 +8,8 @@
  */
 
 import type { Job, JobSearchResponse } from '../../types/domain';
+import { MockProvider } from './mock-provider';
+import { ApiProvider } from './api-provider';
 
 // ============================================================================
 // DataProvider Interface
@@ -50,13 +52,10 @@ export function createDataProvider(): DataProvider {
   // In future, this could check environment variables to determine which provider to use
   // For now, always use MockProvider in development
   if (process.env.NODE_ENV === 'development' || process.env.USE_MOCK_DATA === 'true') {
-    // Dynamic import to avoid bundling mock data in production
-    const { MockProvider } = require('./mock-provider');
     return new MockProvider();
   }
 
   // In production, use ApiProvider
-  const { ApiProvider } = require('./api-provider');
   return new ApiProvider();
 }
 
